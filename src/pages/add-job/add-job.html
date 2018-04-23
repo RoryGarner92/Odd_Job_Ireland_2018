@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title class="ion-title">AddJob</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bgc">
+    <!-- <h2>Job Ower : {{job.owner}}</h2> -->
+    <ion-card>
+        <img class="jobimage" src="assets/img/icon.jpg">
+        <ion-item>
+            <ion-label>Area :</ion-label>
+            <ion-select [(ngModel)]="job.county" multiple="false">
+                <ion-option *ngFor="let v of county">{{v}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Category :</ion-label>
+            <ion-select [(ngModel)]="job.category" multiple="false">
+                <ion-option *ngFor="let v of category">{{v}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Job Image :</ion-label>
+            <ion-select [(ngModel)]="job.jobImage" multiple="false">
+                <ion-option value="assets/img/repairs.jpg">Repairs</ion-option>
+                <ion-option value="assets/img/events.jpg">Events</ion-option>
+                <ion-option value="assets/img/painting.jpg">Painting</ion-option>
+                <ion-option value="assets/img/cleaning.jpg">Cleaning</ion-option>
+                <ion-option value="assets/img/Gardening.jpg">Gardening</ion-option>
+                <ion-option value="assets/img/childcare.jpg">Child Care</ion-option>
+                <ion-option value="assets/img/makup.png">Shopping</ion-option>
+                <ion-option value="assets/img/carpentry.jpg">Carpentry</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Price :</ion-label>
+            <ion-select [(ngModel)]="job.price" multiple="false">
+                <ion-option *ngFor="let v of price">{{v}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Complete Job By Date : </ion-label>
+            <ion-datetime displayFormat="DD MMM, YYYY HH:mm" [(ngModel)]="job.requiredDate"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Description of Job : </ion-label>
+            <ion-textarea [(ngModel)]="job.description" aria-placeholder="What I Need"></ion-textarea>
+        </ion-item>
+    </ion-card>
+    <button ion-button full (click)="addJob(job)">Post Job</button>
+</ion-content>

@@ -1,0 +1,64 @@
+<!-- <ion-header>
+
+    <ion-navbar>
+        <ion-title>Register</ion-title>
+    </ion-navbar>
+
+</ion-header> -->
+
+
+<!-- <ion-content padding>
+
+    <ion-item>
+        <ion-label color="danger">Email Address</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="danger">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="danger">Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.confirmPassword" name="password"></ion-input>
+    </ion-item>
+
+    <p>Register an account using a valid email address</p>
+    <br>
+    <button ion-button full color="danger" (click)="registerAccount(user)">Register</button>
+
+</ion-content> -->
+
+<ion-content class="background">
+    <ion-card>
+        <ion-card-header>
+            Register an Account
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list no-lines>
+                <ion-item>
+                    <ion-label floating>Email</ion-label>
+                    <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Password</ion-label>
+                    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Confirm Password</ion-label>
+                    <ion-input type="password" [(ngModel)]="user.confirmPassword"></ion-input>
+                </ion-item>
+                <!-- <ion-item>
+            <p>Forgot Password ? <a>Get Your password</a></p>
+          </ion-item> -->
+                <!-- <button ion-button outline block color="danger">Login</button> -->
+
+                <p>Please make sure you are register an account using a valid email address</p>
+                <button ion-button full (click)="registerAccount(user)">Register</button>
+            </ion-list>
+
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>

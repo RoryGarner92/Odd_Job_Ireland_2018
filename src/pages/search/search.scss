@@ -1,0 +1,42 @@
+page-search {
+    .jobimage {
+        width: 100%;
+        height: 200px;
+        //  border-radius: 100%;
+        border: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        //  width: 50%;
+    }
+    ion-content {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    // for the images 
+    // .image {
+    //     height: 5vw;
+    //     width: 5vw;
+    //     border: 2px solid #fff;
+    //     border-radius: 50%;
+    //     box-shadow: 0 0 5px gray;
+    //     display: inline-block;
+    //     margin-left: auto;
+    //     margin-right: auto;
+    // }
+    .ion-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 90px 1px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    .pricetag {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 54px 10px 10px 0px;
+    }
+}

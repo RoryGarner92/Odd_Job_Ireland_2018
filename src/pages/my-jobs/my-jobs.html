@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="segment">
+            <ion-segment-button value="posted">
+                Jobs Posted by me
+            </ion-segment-button>
+            <ion-segment-button value="assigned">
+                Jobs Assigned to me
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="bgc">
+    <div [ngSwitch]="segment">
+        <div *ngSwitchCase="'posted'">
+            <ng-container *ngFor="let note of notes | async">
+                <ion-card *ngIf="note.email === jobEmail" detail-push navPush="UpdateJobPage" [navParams]="{note:note}">
+                    <ion-card-header>
+                        <button ion-button icon-left clear small>
+                            <ion-icon name="pricetag"></ion-icon>
+                            <div>Price : {{note.price}}</div>
+                            </button>
+                        <ion-note>{{note.dateCreated}}</ion-note>
+                    </ion-card-header>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="{{note.userImage}}">
+                        </ion-avatar>
+                        <h2>{{note.owner}}</h2>
+                        <p>{{note.category}}, {{note.status}}, {{note.county}}</p>
+                    </ion-item>
+                    <img class="jobimage" src="{{note.jobImage}}">
+                    <ion-card-content>
+                        <p>{{note.description}}</p>
+                    </ion-card-content>
+                    <ion-row>
+                        <div>
+                            <ion-note>Tap to Edit your Job</ion-note>
+                        </div>
+                    </ion-row>
+                </ion-card>
+            </ng-container>
+        </div>
+
+        <div *ngSwitchCase="'assigned'">
+            <ng-container *ngFor="let note of notes | async">
+                <ion-card *ngIf="note.assignedTo === userName">
+                    <ion-card-header>
+                        <button ion-button icon-left clear small>
+                            <ion-icon name="pricetag"></ion-icon>
+                            <div>Price : {{note.price}}</div>
+                        </button>
+                        <ion-note>{{note.dateCreated}}</ion-note>
+                    </ion-card-header>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="{{note.userImage}}">
+                        </ion-avatar>
+                        <h2>{{note.owner}}</h2>
+                        <p>{{note.category}}, {{note.status}}, {{note.county}}</p>
+                    </ion-item>
+                    <!-- <ion-input type="hidden" [(ngModel)]="savedJobEmail">{{note.email}}</ion-input> -->
+                    <img class="jobimage" src="{{note.jobImage}}">
+                    <ion-card-content>
+                        <p>{{note.description}}</p>
+                    </ion-card-content>
+                    <ion-row>
+                        <!-- navPush="UpdateJobPage" [navParams]="{note:note}" -->
+                        <ion-col center text-center>
+                            <button (click)="delayJob(note)" ion-button icon-left clear>
+                                <ion-icon name="clock"></ion-icon>
+                                <div>Delay</div>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-card>
+            </ng-container>
+        </div>
+    </div>
+</ion-content>

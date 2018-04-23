@@ -1,0 +1,109 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="segment">
+            <ion-segment-button value="jobs">
+                Jobs
+            </ion-segment-button>
+            <ion-segment-button value="users">
+                Users
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+    <ion-item>
+        <ion-label>Display Filter Options</ion-label>
+        <ion-toggle [(ngModel)]="show"></ion-toggle>
+    </ion-item>
+</ion-header>
+
+
+<ion-content padding class="bgc">
+    <div [ngSwitch]="segment">
+        <div *ngSwitchCase="'jobs'">
+            <div *ngIf="show === true">
+                <ion-item>
+                    <ion-label>Filter on Category</ion-label>
+                    <ion-select [(ngModel)]="category" (ngModelChange)="filterExact('category', category)">
+                        <ion-option>Repairs</ion-option>
+                        <ion-option>Events</ion-option>
+                        <ion-option>Painting</ion-option>
+                        <ion-option>Cleaning</ion-option>
+                        <ion-option>Carpentry</ion-option>
+                        <ion-option>Gardening</ion-option>
+                        <ion-option>Shopping</ion-option>
+                        <ion-option>Child-Care</ion-option>
+                    </ion-select>
+                </ion-item>
+                <button ion-button full *ngIf="category" (click)="removeFilter('category')">Remove filter</button>
+
+                <ion-item>
+                    <ion-label>Filter on Status</ion-label>
+                    <ion-select [(ngModel)]="status" (ngModelChange)="filterExact('status', status)">
+                        <ion-option>Open</ion-option>
+                        <ion-option>Closed</ion-option>
+                    </ion-select>
+                </ion-item>
+                <button ion-button full *ngIf="status" (click)="removeFilter('status')">Remove filter</button>
+            </div>
+
+            <ng-container *ngFor="let f of filteredJobs">
+                <ion-card>
+                    <ion-card-header>
+                        <button ion-button icon-left clear small>
+                    <ion-icon name="pricetag"></ion-icon>
+                        <div>Price : {{f.price}}</div>
+                    </button>
+                        <ion-note>
+                            {{f.dateCreated}}
+                        </ion-note>
+                    </ion-card-header>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="{{f.userImage}}">
+                        </ion-avatar>
+                        <h2>{{userName}}</h2>
+                        <p>{{f.category}}, {{f.status}}</p>
+                    </ion-item>
+                    <img class="jobimage" src="{{f.jobImage}}">
+                    <ion-card-content>
+                        <p>{{f.description}}</p>
+                    </ion-card-content>
+
+                    <ion-row>
+                        <ion-col center text-center>
+                            <button (click)="reportIssue()" ion-button icon-left clear>
+        <ion-icon name="thumbs-down"></ion-icon>
+        <div>Report</div>
+      </button>
+                        </ion-col>
+                        <ion-col center text-center>
+                            <button (click)="requestJob()" ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>Request</div>
+      </button>
+                        </ion-col>
+
+                    </ion-row>
+                </ion-card>
+            </ng-container>
+        </div>
+
+
+        <div *ngSwitchCase="'users'">
+            <div *ngIf="show === true">
+            </div>
+            <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+            <ng-container *ngFor="let u of userList">
+                <ion-card detail-push navPush="ViewProfilePage" [navParams]="{u:u}">
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="{{u.profileUrl}}">
+                        </ion-avatar>
+                        {{u.firstName}} {{u.lastName}}
+                        <br> Skill: {{u.primarySkill}}
+                    </ion-item>
+                </ion-card>
+            </ng-container>
+        </div>
+    </div>
+
+</ion-content>

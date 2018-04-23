@@ -1,0 +1,45 @@
+<!-- <ion-header>
+    <ion-navbar color="primary">
+        <ion-title class="ion-title">UpdateJob</ion-title>
+    </ion-navbar>
+</ion-header> -->
+<ion-header color="primary">
+    <ion-navbar>
+        <ion-title>UpdateJob</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <img class="jobimage" src="assets/img/icon.jpg">
+        <ion-item>
+            <ion-label>Update Job Price :</ion-label>
+            <ion-select [(ngModel)]="job.price" multiple="false">
+                <ion-option *ngFor="let v of price">{{v}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Update Job State :</ion-label>
+            <ion-select [(ngModel)]="job.status" multiple="false">
+                <ion-option>Assigned</ion-option>
+                <ion-option>Closed</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Assigned Job to :</ion-label>
+            <ion-select [(ngModel)]="job.assignedTo" multiple="false">
+                <ion-option *ngFor="let u of allusers">{{u.userName}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Complete Job By Date : </ion-label>
+            <ion-datetime displayFormat="DD MMM, YYYY HH:mm" [(ngModel)]="requiredDate"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label floating> Update Job Description : </ion-label>
+            <ion-textarea [(ngModel)]="job.description" aria-placeholder="What I Need"></ion-textarea>
+        </ion-item>
+    </ion-card>
+    <button ion-button full (click)="update(job)">Update Job</button>
+
+</ion-content>

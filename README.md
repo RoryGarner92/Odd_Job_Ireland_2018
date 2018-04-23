@@ -1,2 +1,15 @@
-# Odd_Job_Ireland_2018
-Final Year Project, built using the Ionic 3 framework and a Firebase BaaS
+# Odd_Job
+Final year project 
+
+# Requires Node JS 6 ++
+# Requires Ionic
+# Requires Git
+# Requires Ionic CLI
+
+# To run on Pc 
+
+Clone from GitHub
+
+Run "Npm install" command from inside the directory through cmd prompt
+
+Run "Ionic Lab" to display in browser

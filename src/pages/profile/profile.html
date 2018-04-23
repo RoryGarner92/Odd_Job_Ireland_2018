@@ -1,0 +1,29 @@
+<ion-header class="bar-stable">
+    <ion-navbar color="primary">
+        <ion-title class="ion-title"> {{(myProfile | async)?.userName}} </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="signOut()">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <br><br><br>
+    <div class="list card">
+        <ion-item class="profile-item">
+            <div class="profile-picture big-profile-picture" (click)="pictureFromCamera()">
+                <img src="{{(myProfile | async)?.profileUrl}}">
+            </div>
+            <P>Tap to Edit</P><br>
+            <h2 class="profile-name dark">{{(myProfile | async)?.firstName}} {{(myProfile | async)?.lastName}}</h2><br>
+            <div class="profile-info">Balance :{{(myProfile | async)?.oddDollarBalance}}</div><br>
+            <div>DOB :{{(myProfile | async)?.dateOfBirth}}<br> Main Skill :{{(myProfile | async)?.primarySkill}}<br></div><br>
+            <p>Skill List :{{(myProfile | async)?.skills}}</p><br>
+
+            <button ion-button full large detail-push navPush="EditProfilePage" [navParams]="{myProfile:myProfile}">Edit</button>
+            <button full ion-button large navPush="AddReviewPage">Post a Review</button><br>
+        </ion-item>
+    </div>
+</ion-content>

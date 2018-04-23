@@ -1,0 +1,36 @@
+page-view-profile {
+    .profile-item {
+        text-align: center;
+    }
+    .profile-picture {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        padding: 3px;
+        border-radius: 100%;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        margin: 0 auto;
+        width: 128px;
+        height: 128px;
+        overflow: hidden;
+    }
+    .profile-picture img {
+        width: 128px;
+        height: 128px;
+        border-radius: 100%;
+    }
+    .profile-name {
+        padding-top: 20px;
+        font-size: x-large !important;
+        font-weight: bold !important;
+        text-transform: capitalize;
+    }
+    .review {
+        border-radius: 5px;
+        display: inline-block;
+        padding: 10px 18px;
+        position: relative;
+        margin: 10px;
+        max-width: 80%;
+    }
+}

@@ -1,0 +1,53 @@
+<ion-header>
+
+    <ion-navbar colour="light">
+        <ion-title>Add a Review</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img class="jobimage" src="assets/img/ica-slidebox-img-1.png">
+    <ion-card>
+        <ion-item>
+            <ion-label>User :</ion-label>
+            <ion-select [(ngModel)]="review.name" multiple="false">
+                <ion-option *ngFor="let u of allusers">{{u.userName}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label> Standard of Work :</ion-label>
+            <ion-select [(ngModel)]="review.rating" multiple="false">
+                <ion-option>Very Poor</ion-option>
+                <ion-option>Poor</ion-option>
+                <ion-option>Good</ion-option>
+                <ion-option>Very Good</ion-option>
+                <ion-option>Excellent</ion-option>
+            </ion-select>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label> User Rating :</ion-label>
+            <ion-select [(ngModel)]="review.rating" multiple="false">
+                <ion-option>1</ion-option>
+                <ion-option>2</ion-option>
+                <ion-option>3</ion-option>
+                <ion-option>4</ion-option>
+                <ion-option>5</ion-option>
+                <ion-option>6</ion-option>
+                <ion-option>7</ion-option>
+                <ion-option>8</ion-option>
+                <ion-option>9</ion-option>
+                <ion-option>10</ion-option>
+            </ion-select>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label floating>Further Comments</ion-label>
+            <ion-textarea [(ngModel)]="review.comment" aria-placeholder="What I Need"></ion-textarea>
+        </ion-item>
+        <br>
+    </ion-card>
+    <button ion-button full (click)="postReview(review)">Post Job</button>
+</ion-content>

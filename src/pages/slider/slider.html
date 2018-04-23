@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Slides</ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="continue()">Skip</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="tutorial-page">
+
+    <ion-slides>
+        <ion-slide>
+            <img src="assets/img/ica-slidebox-img-1.png" class="slide-image" />
+            <h2 class="slide-title">ODD JOB</h2>
+            <p>Irelands First L.E.T.S application</p>
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/img/ica-slidebox-img-2.png" class="slide-image" />
+            <h2 class="slide-title">Currency</h2>
+            <p>Your money is no good here ! </p>
+            <p>We use Odd Dollars here </p>
+            <p>The first 100 is on us, but then the rest is up to you </p>
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/img/ica-slidebox-img-3.png" class="slide-image" />
+            <h2 class="slide-title">Getting Started</h2>
+            <p>Build a Profile</p>
+            <p>Appily for Jobs</p>
+            <p>Get Paid</p>
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+            <h3 class="slide-title">What do you need</h3>
+            <h3 class="slide-title">to get started?</h3>
+            <p>Just a valid Email! </p>
+            <p> Ready to Go ?</p>
+            <div padding="0">
+                <button ion-button icon-end clear (click)="continue()"> Get Started!
+                    <ion-icon name="arrow-forward"></ion-icon>
+                  </button>
+            </div>
+        </ion-slide>
+    </ion-slides>
+</ion-content>
+
+
+
+
+<!-- 
+<ion-content class="tutorial-page">
+
+    <ion-slides pager>
+        <ion-slide>
+            <ion-toolbar>
+                <ion-buttons end>
+                    <button ion-button color="primary">Skip</button>
+                </ion-buttons>
+            </ion-toolbar>
+            <img [src]="slide.image" class="slide-image" />
+            <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+            <p [innerHTML]="slide.description"></p>
+        </ion-slide>
+
+</ion-content> -->

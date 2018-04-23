@@ -1,0 +1,59 @@
+page-home {
+    // .jobimage {
+    //     width: 128px;
+    //     height: 128px;
+    //     border-radius: 100%;
+    //     border: 3px;
+    //     display: block;
+    //     margin-left: auto;
+    //     margin-right: auto;
+    //     width: 50%;
+    // }
+    .jobimage {
+        width: 100%;
+        height: 200px;
+        //  border-radius: 100%;
+        border: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        //  width: 50%;
+    }
+    .ion-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 90px 1px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    .pricetag {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 54px 10px 10px 0px;
+    }
+    .bgc {
+        background-color: rgb(235, 232, 232);
+        // padding-right: 0px!important;
+        // padding-left: 0px!important;
+        // margin-left: 0px!important;
+        // margin-right: 0px!important;
+        //width: 100% !important;
+        // padding: 0 !important;
+    }
+    // .customCard {
+    //     width: 100% !important;
+    //     padding-right: 0px!important;
+    //     padding-left: 0px!important;
+    //     margin-left: 0px!important;
+    //     margin-right: 0px!important;
+    // }
+    // .scroll-content {
+    //     padding-right: 0px!important;
+    //     padding-left: 0px!important;
+    //     margin-left: 0px!important;
+    //     margin-top: 40px!important;
+    // }
+}

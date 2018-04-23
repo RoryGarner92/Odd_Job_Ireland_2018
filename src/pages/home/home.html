@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <!-- <ion-item background-color="transparent">
+            <ion-avatar item-start>
+                <img src="{{userImage}}">
+            </ion-avatar>
+        </ion-item> -->
+        <ion-title class="ion-title">Odd Job</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only navPush="SearchPage">
+                  <ion-icon name="search"></ion-icon>
+                </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding="false" class="bgc">
+    <ng-container *ngFor="let f of theJobs">
+        <ion-card *ngIf="f.status=='Open'">
+            <!-- navPush="ViewProfilePage" [navParams]="{profile:profile}" -->
+            <ion-card-header>
+                <button ion-button icon-left clear small>
+                    <ion-icon name="pricetag"></ion-icon>
+                        <div>Price : {{f.price}}</div>
+                    </button>
+                <ion-note>
+                    {{f.dateCreated}}
+                </ion-note>
+            </ion-card-header>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="{{f.userImage}}">
+                </ion-avatar>
+                <h2>{{f.owner}}</h2>
+                <p>{{f.category}}, {{f.status}}, {{f.county}}</p>
+            </ion-item>
+            <hr>
+            <img class="jobimage" src="{{f.jobImage}}">
+            <hr>
+            <ion-card-content>
+                <p>{{f.description}}</p>
+            </ion-card-content>
+            <ion-row>
+                <ion-col center text-center>
+                    <button (click)="reportIssue(f)" ion-button icon-left clear>
+        <ion-icon name="thumbs-down"></ion-icon>
+        <div>Report</div>
+      </button>
+                </ion-col>
+                <ion-col center text-center>
+                    <button (click)="requestJob(f)" ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>Request</div>
+      </button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </ng-container>
+</ion-content>

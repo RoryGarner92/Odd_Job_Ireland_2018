@@ -1,0 +1,61 @@
+<!-- <ion-header class="bar-stable">
+    <ion-navbar>
+        <h1 class="title"> {{profile.userName}} </h1>
+    </ion-navbar>
+</ion-header> -->
+
+<ion-header>
+    <ion-navbar class="bar-stable" color="primary">
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <br><br><br>
+    <div class="list card">
+        <ion-item class="profile-item">
+            <div class="profile-picture big-profile-picture">
+                <img src="{{profile.profileUrl}}">
+            </div><br>
+            <h1>{{profile.userName}}</h1>
+            <br>
+            <h2 class="profile-name dark">{{profile.firstName}} {{profile.lastName}}</h2><br>
+            <div> Main Skill :{{profile.primarySkill}}<br></div><br>
+            <p>Skill List :{{profile.skills}}</p><br>
+
+            <button full large ion-button (click)="contact()">Contact User</button>
+        </ion-item>
+        <div>
+            <ion-item>
+                <ion-label> Transfer Amount :</ion-label>
+                <ion-select [(ngModel)]="price" multiple="false">
+                    <ion-option>00</ion-option>
+                    <ion-option>10</ion-option>
+                    <ion-option>20</ion-option>
+                    <ion-option>30</ion-option>
+                    <ion-option>40</ion-option>
+                    <ion-option>50</ion-option>
+                    <ion-option>60</ion-option>
+                    <ion-option>70</ion-option>
+                    <ion-option>80</ion-option>
+                    <ion-option>90</ion-option>
+                    <ion-option>100</ion-option>
+                </ion-select>
+            </ion-item>
+            <button full large ion-button icon-right (click)="payment(price)">
+                    Transfer Payment
+                        <ion-icon name="cash"></ion-icon>
+                </button><br>
+        </div>
+    </div>
+    <!-- Tidy Display -->
+    <div *ngFor="let rev of reviewData | async">
+
+        <div class="review">
+            <h3>Review</h3>
+            <p>Name :{{rev.name}}</p>
+            <p>Rating :{{rev.rating}}</p>
+            <p>Review Date :{{rev.reviewDate}}</p>
+            <p>Comment :{{rev.comment}}</p>
+        </div>
+    </div>
+</ion-content>
