@@ -1,5 +1,8 @@
 <ion-header>
     <ion-navbar color="primary">
+        <button ion-button icon-only color="danger">
+                        <ion-icon name="cash"> {{balance}}</ion-icon>
+                      </button>
         <ion-title class="ion-title">AddJob</ion-title>
     </ion-navbar>
 </ion-header>
@@ -29,7 +32,7 @@
                 <ion-option value="assets/img/cleaning.jpg">Cleaning</ion-option>
                 <ion-option value="assets/img/Gardening.jpg">Gardening</ion-option>
                 <ion-option value="assets/img/childcare.jpg">Child Care</ion-option>
-                <ion-option value="assets/img/makup.png">Shopping</ion-option>
+                <ion-option value="assets/img/makup.jpg">Shopping</ion-option>
                 <ion-option value="assets/img/carpentry.jpg">Carpentry</ion-option>
             </ion-select>
         </ion-item>
@@ -44,9 +47,10 @@
             <ion-datetime displayFormat="DD MMM, YYYY HH:mm" [(ngModel)]="job.requiredDate"></ion-datetime>
         </ion-item>
         <ion-item>
-            <ion-label floating>Description of Job : </ion-label>
+            <ion-label>Description of Job : </ion-label>
             <ion-textarea [(ngModel)]="job.description" aria-placeholder="What I Need"></ion-textarea>
         </ion-item>
+        <button ion-button full (click)="addJob(job)">Post Job</button>
     </ion-card>
-    <button ion-button full (click)="addJob(job)">Post Job</button>
+
 </ion-content>

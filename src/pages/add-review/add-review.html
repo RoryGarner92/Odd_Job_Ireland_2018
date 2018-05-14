@@ -18,7 +18,7 @@
         </ion-item>
         <ion-item>
             <ion-label> Standard of Work :</ion-label>
-            <ion-select [(ngModel)]="review.rating" multiple="false">
+            <ion-select [(ngModel)]="review.workRating" multiple="false">
                 <ion-option>Very Poor</ion-option>
                 <ion-option>Poor</ion-option>
                 <ion-option>Good</ion-option>
@@ -28,7 +28,7 @@
         </ion-item>
         <br>
         <ion-item>
-            <ion-label> User Rating :</ion-label>
+            <ion-label> User Rating Out of 10 :</ion-label>
             <ion-select [(ngModel)]="review.rating" multiple="false">
                 <ion-option>1</ion-option>
                 <ion-option>2</ion-option>

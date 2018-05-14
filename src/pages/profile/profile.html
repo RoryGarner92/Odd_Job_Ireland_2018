@@ -21,9 +21,13 @@
             <div class="profile-info">Balance :{{(myProfile | async)?.oddDollarBalance}}</div><br>
             <div>DOB :{{(myProfile | async)?.dateOfBirth}}<br> Main Skill :{{(myProfile | async)?.primarySkill}}<br></div><br>
             <p>Skill List :{{(myProfile | async)?.skills}}</p><br>
-
+            <div *ngIf="!auth">
+                <p>Account Verified: {{auth}}</p>
+                <p>You will not be able to add jobs :(</p>
+            </div>
             <button ion-button full large detail-push navPush="EditProfilePage" [navParams]="{myProfile:myProfile}">Edit</button>
             <button full ion-button large navPush="AddReviewPage">Post a Review</button><br>
         </ion-item>
     </div>
+
 </ion-content>

@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { timer } from 'rxjs/observable/timer';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html' 
 })
 export class MyApp {
   rootPage:string = 'SliderPage';
@@ -20,6 +20,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       //kick off new splash after 3 sec
+      
       timer(3000).subscribe(()=> this.showSplash = false)
     });
   }

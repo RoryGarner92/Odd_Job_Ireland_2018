@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/observable';
 import { Job } from '../../models/job.model';
@@ -7,6 +7,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { EmailComposer } from '@ionic-native/email-composer';
 import * as _ from 'lodash';
 import { Profile } from '../../models/profile.model';
+import { Content } from 'ionic-angular';
 
 
 
@@ -17,6 +18,8 @@ import { Profile } from '../../models/profile.model';
 })
 export class HomePage implements OnInit {
 
+
+  balance: string;
   userEmail: string;
   adminEmail: string = 'oddjobireland2018@gmail.com';
   userImage: string;
@@ -32,7 +35,15 @@ export class HomePage implements OnInit {
   category:     string;
   filters = {}
 
+
+  reportToEmail: string = 'oddjobadmin@gmail.com';
+  reqEmail: string;
+  loadedUserList: any[];
+  userList: any[];
+  searchterm: string;
+  
   constructor(
+    public menuCtrl: MenuController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
@@ -43,6 +54,18 @@ export class HomePage implements OnInit {
   ) {}
     
 
+  openMenu() {
+    this.menuCtrl.open();
+  }
+  closeMenu() {
+    this.menuCtrl.close();
+  }
+ 
+  toggleMenu() {
+    this.menuCtrl.toggle();
+  }
+  
+
   ngOnInit() {
     this.jobCollection = this.afs.collection(`job`, ref => {
       return ref.orderBy('status').orderBy('dateCreated','desc').limit(100)       
@@ -50,12 +73,12 @@ export class HomePage implements OnInit {
     this.jobs = this.jobCollection.valueChanges();
     this.jobs.subscribe( theJobs => {
       this.theJobs = theJobs;
-      console.log(this.theJobs);
-
-  //  //   this.applyFilters();
+      this.reqEmail = this.theJobs.email;
+      this.applyFilters();
      });
 
     
+     
   //getting the ballence of the job owner
   this.afAuth.authState.subscribe(auth => {
     this.profileData = this.afs.doc(`profile/${auth.uid}`)
@@ -64,9 +87,20 @@ export class HomePage implements OnInit {
       this.userName = profileData.userName.toString();
       this.userImage = profileData.profileUrl.toString();
       this.userEmail = profileData.email;
-
+      this.balance = profileData.oddDollarBalance.toString();
     })
   })
+
+  this.getAllUsers().subscribe(cord=>{
+    let users = []; 
+    cord.forEach(function(snap) {
+      users.push(snap);
+      return false;
+    });
+    //console.log(users);
+    this.userList = users;
+    this.loadedUserList = users;
+  });
 
   }
 
@@ -96,6 +130,57 @@ requestJob(f){
   // Send a text message using default options
   this.emailComposer.open(email);
 }
+
+initializeItems(): void {
+  this.userList = this.loadedUserList;
+}
+
+getItems(searchbar) {
+  // Reset items back to all of the items
+  this.initializeItems();
+
+  // set q to the value of the searchbar
+  var q = searchbar.srcElement.value;
+
+
+  // if the value is an empty string don't filter the items
+  if (!q) {
+    return;
+  }
+
+  this.userList = this.userList.filter((v) => {
+    if(v.firstName && q) {
+      if (v.firstName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    }
+  });
+}
+
+private applyFilters() {
+  this.filteredJobs = _.filter(this.theJobs, _.conforms(this.filters) )
+}
+
+  /// removes filter
+  removeFilter(property) {
+    delete this.filters[property]
+    this[property] = null;
+    this.applyFilters();
+  }
+
+/// filter property by equality to rule
+filterExact(property: string, rule: any) {
+  this.filters[property] = val => val == rule;
+  this.applyFilters();
+}
+
+
+// access db and get all users order by firstname
+getAllUsers() { 
+  return this.afs.collection('profile', ref => ref.orderBy('firstName')).valueChanges();
+}
+
 
 
 }

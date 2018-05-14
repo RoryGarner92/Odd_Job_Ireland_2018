@@ -1,23 +1,65 @@
+<ion-menu side="right" [content]="mycontent">
+    <!-- type="overlay"  add for iphones-->
+    <ion-content>
+        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+        <ng-container *ngFor="let u of userList">
+            <ion-item detail-push navPush="ViewProfilePage" [navParams]="{u:u}">
+                <ion-avatar item-start>
+                    <img src="{{u.profileUrl}}">
+                </ion-avatar>
+                {{u.firstName}} {{u.lastName}}
+                <br>Primary Skill: {{u.primarySkill}}
+            </ion-item>
+        </ng-container>
+    </ion-content>
+</ion-menu>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
 <ion-header>
     <ion-navbar color="primary">
-        <!-- <ion-item background-color="transparent">
-            <ion-avatar item-start>
-                <img src="{{userImage}}">
-            </ion-avatar>
-        </ion-item> -->
+        <button ion-button icon-only color="danger">
+                    <ion-icon name="cash"> {{balance}}</ion-icon>
+                  </button>
+        <ion-buttons end>
+            <ion-toggle ion-toggle-text [(ngModel)]="show"> </ion-toggle>
+        </ion-buttons>
         <ion-title class="ion-title">Odd Job</ion-title>
         <ion-buttons end>
-            <button ion-button icon-only navPush="SearchPage">
+            <button ion-button icon-only (click)="openMenu()">
                   <ion-icon name="search"></ion-icon>
                 </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding="false" class="bgc">
-    <ng-container *ngFor="let f of theJobs">
+<ion-content padding="false" class="bgc" #content>
+    <div *ngIf="show === true">
+        <ion-item>
+            <ion-label>Filter on Category</ion-label>
+            <ion-select [(ngModel)]="category" (ngModelChange)="filterExact('category', category)">
+                <ion-option>Repairs</ion-option>
+                <ion-option>Events</ion-option>
+                <ion-option>Painting</ion-option>
+                <ion-option>Cleaning</ion-option>
+                <ion-option>Carpentry</ion-option>
+                <ion-option>Gardening</ion-option>
+                <ion-option>Shopping</ion-option>
+                <ion-option>Child-Care</ion-option>
+            </ion-select>
+        </ion-item>
+        <button ion-button full *ngIf="category" (click)="removeFilter('category')">Remove filter</button>
+
+        <ion-item>
+            <ion-label>Filter on Status</ion-label>
+            <ion-select [(ngModel)]="status" (ngModelChange)="filterExact('status', status)">
+                <ion-option>Open</ion-option>
+                <ion-option>Closed</ion-option>
+            </ion-select>
+        </ion-item>
+        <button ion-button full *ngIf="status" (click)="removeFilter('status')">Remove filter</button>
+    </div>
+    <ng-container *ngFor="let f of filteredJobs">
         <ion-card *ngIf="f.status=='Open'">
-            <!-- navPush="ViewProfilePage" [navParams]="{profile:profile}" -->
             <ion-card-header>
                 <button ion-button icon-left clear small>
                     <ion-icon name="pricetag"></ion-icon>

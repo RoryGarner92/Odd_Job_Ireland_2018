@@ -15,6 +15,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class ViewProfilePage {
 
+  viewOptions: boolean = false;
+  viewReviews: boolean = false;
   numberPrice: number;
   price: any;
   userEmail: string;
@@ -26,6 +28,7 @@ export class ViewProfilePage {
   data: any;
   p1: any;
   profile: Profile;
+  auth: any = this.afAuth.auth.currentUser.emailVerified.toString();
 
   myProfile: AngularFirestoreDocument<Profile>;
   otherUserProfile: AngularFirestoreDocument<Profile>;
@@ -61,8 +64,10 @@ export class ViewProfilePage {
 })
 }
 
-//*****************************************Transfer Payment Block***************************************************/
 
+
+
+//*****************************************Transfer Payment Block***************************************************/
 payment(){
 this.numberPrice = parseInt(this.price);
 this.transfer = this.numberPrice;
@@ -71,13 +76,13 @@ this.myUpdatedBalance = this.myBalance - this.transfer;
 this.otherUserBalance = this.profile.oddDollarBalance;
 this.otherUserUpdatedBalance = this.otherUserBalance + this.transfer;
 
-if(this.myBalance >= this.transfer){
+if(this.myBalance >= this.transfer && this.auth ==='true'){
   this.myProfile.update({oddDollarBalance: this.myUpdatedBalance});
   this.otherUserProfile.update({oddDollarBalance: this.otherUserUpdatedBalance}); 
 
 console.log('data from payment', this.myUpdatedBalance);
 
-this.navCtrl.parent.parent.setRoot('TabsPage');
+this.navCtrl.setRoot('TabsPage');
 console.log("other bal", this.otherUserUpdatedBalance);
 }else{
   alert("It seems like something has gone wrong :( are you trying to transfer an amount that is greater than you balance, Try doing some jobs to increase you balance. ");

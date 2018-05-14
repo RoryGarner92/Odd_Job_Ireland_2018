@@ -6,7 +6,7 @@ export interface Profile {
     lastName: string,
     dateOfBirth : string,
     oddDollarBalance: number,
-    userRating: string,
+    // userRating: string,
     primarySkill: string,
     profileUrl : string
     skills : string[],

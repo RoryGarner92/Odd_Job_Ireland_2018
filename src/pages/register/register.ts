@@ -59,7 +59,6 @@ export class RegisterPage implements OnInit {
 
     try{
      // this.startDate = new Date().toLocaleString();
-
       if(this.user.password === this.user.confirmPassword){
       this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password)
       .then(result => {

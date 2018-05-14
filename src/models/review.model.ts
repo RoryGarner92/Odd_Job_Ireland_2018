@@ -6,5 +6,6 @@ export interface Review {
     rating: string,
     reviewDate: string,
     reviewer: string
+    workRating: string
     
 }

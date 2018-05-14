@@ -28,6 +28,7 @@ export class AddReviewPage {
     comment: '',
     name:'',
     reviewer:'',
+    workRating:''
   } as Review;
 
   constructor(

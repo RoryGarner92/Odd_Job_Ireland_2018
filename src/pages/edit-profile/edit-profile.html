@@ -1,68 +1,58 @@
 <ion-header>
-
-    <ion-navbar>
+    <ion-navbar color="primary">
         <ion-title>EditProfile</ion-title>
     </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding color="secondary">
-
-    <ion-item>
-        <ion-label>User Name : </ion-label>
-        <br>
-        <ion-input type="text" [(ngModel)]="profile.userName" placeholder="Text Input"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>First Name : </ion-label>
-        <br>
-        <ion-input type="text" [(ngModel)]="profile.firstName"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Last Name : </ion-label>
-        <br>
-        <ion-input type="text" [(ngModel)]="profile.lastName"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Date of Birth : </ion-label>
-        <br>
-        <ion-input type="date" [(ngModel)]="profile.dateOfBirth"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Main Skill :</ion-label>
-        <ion-select [(ngModel)]="profile.primarySkill" multiple="false">
-            <ion-option value="Repairs">Repairs</ion-option>
-            <ion-option value="Communication">Communication</ion-option>
-            <ion-option value="Painting">Painting</ion-option>
-            <ion-option value="Cleaning">Cleaning</ion-option>
-            <ion-option value="Carpentry">Carpentry</ion-option>
-            <ion-option value="Gardening">Gardening</ion-option>
-            <ion-option value="Child Care">Child Care</ion-option>
-            <ion-option value="Shopping">Shopping</ion-option>
-        </ion-select>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Skills :</ion-label>
-        <ion-select [(ngModel)]="profile.skills" multiple="true">
-            <ion-option value="Repairs">Repairs</ion-option>
-            <ion-option value="Communication">Communication</ion-option>
-            <ion-option value="Painting">Painting</ion-option>
-            <ion-option value="Cleaning">Cleaning</ion-option>
-            <ion-option value="Carpentry">Carpentry</ion-option>
-            <ion-option value="Gardening">Gardening</ion-option>
-            <ion-option value="Child Care">Child Care</ion-option>
-            <ion-option value="Shopping">Shopping</ion-option>
-        </ion-select>
-    </ion-item>
-
-
-
-    <button ion-button clear block (click)="createProfile()">Update Profile</button>
-
+    <img class="jobimage" src="assets/img/icon.jpg">
+    <ion-card>
+        <ion-item>
+            <ion-label>User Name : </ion-label>
+            <br>
+            <ion-input type="text" [(ngModel)]="profile.userName" placeholder="Text Input"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>First Name : </ion-label>
+            <br>
+            <ion-input type="text" [(ngModel)]="profile.firstName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Last Name : </ion-label>
+            <br>
+            <ion-input type="text" [(ngModel)]="profile.lastName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Date of Birth : </ion-label>
+            <br>
+            <ion-input type="date" [(ngModel)]="profile.dateOfBirth"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Main Skill :</ion-label>
+            <ion-select [(ngModel)]="profile.primarySkill" multiple="false">
+                <ion-option value="Repairs">Repairs</ion-option>
+                <ion-option value="Communication">Communication</ion-option>
+                <ion-option value="Painting">Painting</ion-option>
+                <ion-option value="Cleaning">Cleaning</ion-option>
+                <ion-option value="Carpentry">Carpentry</ion-option>
+                <ion-option value="Gardening">Gardening</ion-option>
+                <ion-option value="Child Care">Child Care</ion-option>
+                <ion-option value="Shopping">Shopping</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Skills :</ion-label>
+            <ion-select [(ngModel)]="profile.skills" multiple="true">
+                <ion-option value="Repairs">Repairs</ion-option>
+                <ion-option value="Communication">Communication</ion-option>
+                <ion-option value="Painting">Painting</ion-option>
+                <ion-option value="Cleaning">Cleaning</ion-option>
+                <ion-option value="Carpentry">Carpentry</ion-option>
+                <ion-option value="Gardening">Gardening</ion-option>
+                <ion-option value="Child Care">Child Care</ion-option>
+                <ion-option value="Shopping">Shopping</ion-option>
+            </ion-select>
+        </ion-item>
+        <button ion-button full block (click)="createProfile()">Update Profile</button>
+    </ion-card>
 </ion-content>

@@ -27,6 +27,8 @@ export class AddJobPage implements OnInit {
   county:Array<string>;
   category:Array<string>;
   price:Array<string>;
+  auth: any = this.afAuth.auth.currentUser.emailVerified.toString();
+
   
   job = {
     key: this.key,
@@ -54,6 +56,7 @@ export class AddJobPage implements OnInit {
 
 
 ngOnInit(){
+  console.log(this.auth);
   this.county = ['Antrim','Armagh','Carlow','Cavan','Clare','Cork','Derry',
   'Donegal','Down','Dublin','Fermanagh','Galway','Kerry','Kildare','Kilkenny',
   'Laois','Leitrim','Limerick','Longford','Louth','Mayo','Meath','Monaghan',
@@ -80,7 +83,7 @@ ngOnInit(){
     this.numberPrice = parseInt(this.thePrice);
     this.numberBalance = parseInt(this.balance);
   //  this.owner = this.jo;
-   if(this.numberBalance >  this.numberPrice){
+   if(this.numberBalance >  this.numberPrice && this.auth ==='true'){
     this.afs.collection('job').doc(this.key).set(this.job)
     .then(()=>{
       this.afAuth.authState.subscribe(auth => {
@@ -98,7 +101,7 @@ ngOnInit(){
     })
 
     .then(() => {
-      this.navCtrl.parent.parent.setRoot('TabsPage')
+      this.navCtrl.parent.parent.setRoot('TabsPage');
     })
     let toast = this.toastCtrl.create({
       message: `Your Job has been added! `,
@@ -110,7 +113,7 @@ ngOnInit(){
     });
     toast.present();
   }else{
-    alert('Looks Like something has gone wrong... Check your inputs or your balance and try again');
+    alert('Looks Like something has gone wrong... Have you verifyed your email ? Check your inputs or your balance and try again ');
   }
 
 

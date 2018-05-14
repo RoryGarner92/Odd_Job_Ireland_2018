@@ -19,6 +19,8 @@ export class ProfilePage implements OnInit {
 url: any;
 profieData: AngularFirestoreDocument<Profile>;
 myProfile: Observable<Profile>;
+auth: any = this.afAuth.auth.currentUser.emailVerified;
+
 
   constructor(
     public navCtrl: NavController, 
@@ -36,6 +38,7 @@ myProfile: Observable<Profile>;
       this.profieData = this.afs.doc(`profile/${auth.uid}`)
       this.myProfile = this.profieData.valueChanges();
       this.profieData.valueChanges();
+      console.log(this.auth);
       });
   }
 
